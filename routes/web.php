@@ -14,4 +14,14 @@ use App\Http\Controllers\BooksController;
 |
 */
 
-Route::get('/', [BooksController::class,'index']);
+Route::get('/', [BooksController::class,'index'])->name('index');
+Route::match(['get','post'],'/addBookform', [BooksController::class,'addBookform'])->name('addBookform');
+Route::view('/add', 'addBookform')->name('add');
+
+Route::get('/edit/{id}', [BooksController::class,'edit'])->name('edit');
+Route::match(['get','post'],'/editBook', [BooksController::class,'editBook'])->name('editBook');
+
+Route::get('/deleteBook/{id}', [BooksController::class,'deleteBook'])->name('deleteBook');
+
+
+
